@@ -88,7 +88,7 @@ const Editor = () => {
   };
 
   const handleFixBug = async () => {
-    setCode('');
+    setOutput('');
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: code,
@@ -100,7 +100,7 @@ const Editor = () => {
       stop: ['###'],
     });
     console.log(response);
-    setCode(response.data.choices[0].text);
+    setOutput(response.data.choices[0].text);
   };
 
   const handleInputChange = (e) => {
@@ -117,7 +117,7 @@ const Editor = () => {
       case 'python3':
         setLanguageIcon(pythonIcon);
         setFileName('python');
-        setInputLanguage('python');
+        setInputLanguage('py');
         break;
       case 'java':
         setLanguageIcon(javaIcon);
@@ -127,7 +127,7 @@ const Editor = () => {
       case 'javascript':
         setLanguageIcon(javascriptIcon);
         setFileName('javascript');
-        setInputLanguage('javascript');
+        setInputLanguage('js');
         break;
       default:
         setLanguageIcon(cppIcon);
